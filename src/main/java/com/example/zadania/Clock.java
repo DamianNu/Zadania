@@ -5,8 +5,8 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Clock {
-    int hour;
-    int minute;
+   private int hour;
+    private int minute;
 
     public Clock(int hour, int minute) {
         this.hour = hour;
