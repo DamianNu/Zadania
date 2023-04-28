@@ -25,6 +25,7 @@ public class Algorithm {
         return result;
     }
 
+
 }
 
 class ProgramA {
