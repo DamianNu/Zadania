@@ -72,7 +72,7 @@ public class Clock {
                 clocks.add(clock5);
 
                 for (int i = 0; i < clocks.size(); i++) {
-                    clocks.get(i).addMinute(120);
+                    clocks.get(i).addMinute(79);
                     System.out.println(clocks.get(i));
                 }
 
