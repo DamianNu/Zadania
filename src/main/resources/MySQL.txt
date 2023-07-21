@@ -1,0 +1,51 @@
+CREATE TABLE ISSUESLISTS
+(
+    ID   SERIAL PRIMARY KEY,
+    NAME VARCHAR(255)
+);
+
+CREATE TABLE ISSUES
+(
+    ID                 SERIAL PRIMARY KEY,
+    ISSUESLIST_ID      BIGINT UNSIGNED NOT NULL,
+    SUMMARY            VARCHAR(255),
+    DESCRIPTION        VARCHAR(1000),
+    USER_ID_ASSIGNEDTO BIGINT UNSIGNED NOT NULL,
+    FOREIGN KEY (ISSUESLIST_ID) REFERENCES ISSUESLISTS (ID),
+    FOREIGN KEY (USER_ID_ASSIGNEDTO) REFERENCES USERS (ID)
+);
+
+INSERT INTO ISSUESLISTS (NAME)
+VALUES ('ToDo');
+
+INSERT INTO ISSUESLISTS (NAME)
+VALUES ('In progress');
+
+INSERT INTO ISSUESLISTS (NAME)
+VALUES ('Done');
+
+INSERT INTO ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+VALUES
+    (1, 'Task 1 - ToDo', 'Task description 1 - ToDo', 1),
+    (1, 'Task 2 - ToDo', 'Task description 2 - ToDo', 1),
+    (1, 'Task 3 - ToDo', 'Task description 3 - ToDo', 3),
+    (1, 'Task 4 - ToDo', 'Task description 4 - ToDo', 2),
+    (1, 'Task 5 - ToDo', 'Task description 5 - ToDo', 5);
+
+INSERT INTO ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+VALUES
+    (2, 'Task 1 - In progress', 'Task description 1 - In progress', 2),
+    (2, 'Task 2 - In progress', 'Task description 2 - In progress', 2),
+    (2, 'Task 3 - In progress', 'Task description 3 - In progress', 1),
+    (2, 'Task 4 - In progress', 'Task description 4 - In progress', 4),
+    (2, 'Task 5 - In progress', 'Task description 5 - In progress', 5);
+
+INSERT INTO ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+VALUES
+    (3, 'Task 1 - Done', 'Task description 1 - Done', 3),
+    (3, 'Task 2 - Done', 'Task description 2 - Done', 1),
+    (3, 'Task 3 - Done', 'Task description 3 - Done', 5),
+    (3, 'Task 4 - Done', 'Task description 4 - Done', 1),
+    (3, 'Task 5 - Done', 'Task description 5 - Done', 4);
+
+COMMIT;
